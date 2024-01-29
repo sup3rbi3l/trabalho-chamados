@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{%block titulo%}
+Usuários TI
+{%endblock%}
+{% block conteudo%}
+   
+    <h2 style="text-align: center; font-size: 25px; font-family: Segoe UI;">Usuários</h2>
+   
+    <table>
+      <thead>
+          <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          {% for usuario in usuarios %}
+              <tr>
+                  <td>{{ usuario[1] }}</td>
+                  <td>{{ usuario[2] }}</td>
+                  <td>
+                    <a href="/excluir_usuario/{{ usuario[0]}}" class="excluir">Excluir</a>
+                    <a href="/excluir_usuario/{{ usuario[0]}}" class="editar">Editar</a>
+                  
+                </td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+    <div class="divimg">
+        <img class="imgpython" src="{{url_for('static', filename='giphy.gif')}}">
+              </div>
+            
+{%endblock%}

@@ -1,0 +1,56 @@
+{% extends "template.html" %}
+{%block titulo%}
+Chamados TI
+{%endblock%}
+{% block conteudo%}
+   
+    <h2 style="text-align: center; font-size: 25px; font-family: Segoe UI;">Tabela de Chamados</h2>
+
+    <table>
+      <thead>
+          <tr>
+              <th>Número</th>
+              <th>Data de Abertura</th>
+              <th>Data de Fechamento</th>
+              <th>Status</th>
+              <th>Prioridade</th>
+              <th>Tipo de Problema</th>
+              <th>Descrição</th>
+              <th>Solução</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for chamado in chamados %}
+              <tr>
+                  <td>{{ chamado[1] }}</td>
+                  <td>{{ chamado[2] }}</td>
+                  {% if chamado[3] == none %}
+                  <td>{{""}}</td>
+                  {%else %}
+                  <td>{{ chamado[3] }}</td>
+                    {% endif %}
+                  <td>{{ chamado[4] }}</td>
+                  <td>{{ chamado[5] }}</td>
+                  <td>{{ chamado[6] }}</td>
+                  <td>{{ chamado[7] }}</td>
+                  <td>{{ chamado[8] }}</td>
+                  <td>
+                    {% if chamado[10] == 0%}
+                    <button class="editar">Atender</button>
+                    {%else%}
+                    <button>Em Atendimento</button>
+                    {% endif %}
+
+                  </td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+    <div class="divimg">
+        <img class="imgpython" src="{{url_for('static', filename='giphy.gif')}}">
+        <!--Cria uma imagem.-->
+      </div>
+      <!--A expressão {{chamados}} é uma instrução Jinja que é usada para inserir os dados da variável chamados no template HTML.-->
+ 
+{%endblock%}
